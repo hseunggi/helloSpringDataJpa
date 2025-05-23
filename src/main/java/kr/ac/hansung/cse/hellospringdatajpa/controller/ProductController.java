@@ -28,7 +28,7 @@ public class ProductController {
     @GetMapping("/new")
     public String showNewProductPage(Model model) {
 
-        Product product = new Product();
+        Product product = new Product("name","brand","madeIn",1000.00);
         model.addAttribute("product", product);
 
         return "new_product";

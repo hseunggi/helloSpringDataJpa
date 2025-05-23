@@ -9,7 +9,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor
 @Entity
 @Table(name = "product")
 public class Product {
@@ -21,11 +20,16 @@ public class Product {
     private String brand;
     private String madeIn;
     private double price;
-
+    public Product() { }
     public Product(String name, String brand, String madeIn, double price) {
         this.name = name;
         this.brand = brand;
         this.madeIn = madeIn;
         this.price = price;
     }
+    public Long   getId()      { return id; }
+    public String getName()    { return name; }
+    public String getBrand()   { return brand; }
+    public String getMadeIn()  { return madeIn; }
+    public double getPrice()   { return price; }
 }
