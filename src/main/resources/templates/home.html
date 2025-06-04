@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>SpringBoot Security</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/home.css}" />
+</head>
+
+<body>
+
+<div class="container">
+    <h2>helloSpringDataJpa의 홈화면입니다.</h2>
+
+    <div sec:authorize="isAuthenticated()">
+        <p>환영합니다. <span sec:authentication="principal.username"></span>님</p>
+
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="LogOut"/>
+        </form>
+
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
+            <p><a th:href="@{/admin/home}" class="button-link">관리자 홈</a></p>
+        </div>
+
+        <p>Authenticated user roles:</p>
+        <div sec:authorize="isAuthenticated()">
+            <div th:each="authority : ${#authentication.authorities}">
+                <span th:text="${authority.getAuthority()}">[Authority]</span>
+            </div>
+        </div>
+    </div>
+
+    <div sec:authorize="isAnonymous()">
+        <p><a th:href="@{/login}" class="button-link">LogIn</a></p>
+    </div>
+
+    <p><a th:href="@{/products}" class="button-link">상품 보기</a></p>
+</div>
+</body>
+
+</html>

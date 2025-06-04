@@ -2,9 +2,9 @@ package kr.ac.hansung.cse.hellospringdatajpa.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Getter
 @Setter
